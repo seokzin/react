@@ -3,26 +3,32 @@ import ReactDOM from "react-dom";
 import "./index.css";
 
 class Square extends React.Component {
-  // state 초기화
-  constructor(props) {
-    super(props);
-    this.state = {
-      value: null,
-    };
-  }
-
   render() {
     return (
-      <button className="square" onClick={() => this.setState({ value: "X" })}>
-        {this.state.value}
+      <button className="square" onClick={() => this.props.onClick()}>
+        {this.props.value}
       </button>
     );
   }
 }
 
 class Board extends React.Component {
+  // 공유 state 초기화
+  constructor(props) {
+    super(props);
+    this.state = {
+      squares: Array(9).fill(null),
+    };
+  }
+
+  handleClick(i) {
+    const squares = this.state.squares.slice(); // 원본 수정않고 배열의 복사본을 수정 -> 불변성
+    squares[i] = "X";
+    this.setState({ squares: squares });
+  }
+
   renderSquare(i) {
-    return <Square value={i} />; // 자식 Square에게 value props 전달
+    return <Square value={this.state.squares[i]} onClick={() => this.handleClick(i)} />; // 자식 Square에게 함수 전달
   }
 
   render() {
