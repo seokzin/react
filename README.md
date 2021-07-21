@@ -7,7 +7,9 @@
 
 ### 1. PWA + React (JavaScript Mastery)
 
--
+- 간단한 날씨 앱
+- CRA로 작업 도중 PWA 도입
+- axios를 통해 API 통신
 
 ### 2. 동빈나 - React 고객 관리 시스템
 
