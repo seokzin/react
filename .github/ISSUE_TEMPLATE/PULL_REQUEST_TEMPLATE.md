@@ -1,4 +1,4 @@
-resolved #n
+resolved #
 
 ## Description
 
