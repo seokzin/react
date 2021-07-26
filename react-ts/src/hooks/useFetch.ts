@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-const useFetch = (url) => {
+const useFetch = (url: string) => {
   const [data, setData] = useState([]);
 
   useEffect(() => {
@@ -9,7 +9,6 @@ const useFetch = (url) => {
         return res.json();
       })
       .then((data) => {
-        console.log(data);
         setData(data);
       });
   }, [url]);

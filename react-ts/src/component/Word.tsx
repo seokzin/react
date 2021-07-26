@@ -1,6 +1,20 @@
 import { useState } from "react";
 
-const Word = ({ word: w }) => {
+interface IProps {
+  word: IWord;
+}
+
+// json data 타입 참조
+export interface IWord {
+  day: string;
+  eng: string;
+  kor: string;
+  id: number;
+  isDone: boolean;
+}
+
+// word: w 정체가 뭐지
+const Word = ({ word: w }: IProps) => {
   const [word, setWord] = useState(w);
   const [isShow, setIsShow] = useState(false);
   const [isDone, setIsDone] = useState(word.isDone);
@@ -32,7 +46,10 @@ const Word = ({ word: w }) => {
         method: "DELETE",
       }).then((res) => {
         if (res.ok) {
-          setWord({ id: 0 });
+          setWord({
+            ...word,
+            id: 0,
+          });
         }
       });
     }
