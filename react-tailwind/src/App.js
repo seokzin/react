@@ -1,15 +1,20 @@
 import "./App.css";
 import Navbar from "./components/Navbar";
-import Hero from "./components/Hero";
-import Content from "./components/Content";
 import Footer from "./components/Footer";
+import { Route, Switch } from "react-router-dom";
+import Home from "./pages/index";
+import About from "./pages/about";
+import Menu from "./pages/menu";
 
 function App() {
   return (
     <>
       <Navbar />
-      <Hero />
-      <Content />
+      <Switch>
+        <Route path="/" exact component={Home} />
+        <Route path="/menu" component={Menu} />
+        <Route path="/about" component={About} />
+      </Switch>
       <Footer />
     </>
   );
