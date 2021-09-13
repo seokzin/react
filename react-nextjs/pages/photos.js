@@ -1,5 +1,6 @@
 import HeadInfo from "../components/HeadInfo";
 import Image from "next/image";
+import Link from "next/link";
 import photosStyles from "../styles/Photos.module.css";
 
 const photos = ({ photos }) => {
@@ -10,12 +11,17 @@ const photos = ({ photos }) => {
       <ul className={photosStyles.photos}>
         {photos.map((photo) => (
           <li key={photo.id}>
-            <Image
-              src={photo.thumbnailUrl}
-              width={100}
-              height={100}
-              alt={photo.title}
-            />
+            <Link href={`/photos/${photo.id}`}>
+              <a>
+                <Image
+                  src={photo.thumbnailUrl}
+                  width={100}
+                  height={100}
+                  alt={photo.title}
+                />
+              </a>
+            </Link>
+
             <span>{photo.title}</span>
           </li>
         ))}
