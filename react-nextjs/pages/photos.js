@@ -1,12 +1,13 @@
 import HeadInfo from "../components/HeadInfo";
 import Image from "next/image";
+import photosStyles from "../styles/Photos.module.css";
 
 const photos = ({ photos }) => {
   return (
     <div>
       <HeadInfo title="So's Photos" />
       <h1>My Photos</h1>
-      <ul>
+      <ul className={photosStyles.photos}>
         {photos.map((photo) => (
           <li key={photo.id}>
             <Image
@@ -15,6 +16,7 @@ const photos = ({ photos }) => {
               height={100}
               alt={photo.title}
             />
+            <span>{photo.title}</span>
           </li>
         ))}
       </ul>
