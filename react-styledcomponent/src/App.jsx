@@ -1,9 +1,11 @@
 import React from "react";
 import styled from "styled-components";
+import GlobalStyle from "./GlobalStyle";
 
 const App = () => {
   return (
     <>
+      <GlobalStyle />
       <Container>
         <Button>Hello</Button>
         <Button danger>Hello</Button>
