@@ -1,5 +1,5 @@
 import React from "react";
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 import GlobalStyle from "./GlobalStyle";
 
 const App = () => {
@@ -33,4 +33,12 @@ const Anchor = styled(Button.withComponent("a"))`
   text-decoration: none;
 `;
 
+const rotation = keyframes`
+  from{
+    transform: rotate(0deg);
+  }
+  to{
+    transform: rotate(360deg);
+  }
+`;
 export default App;
