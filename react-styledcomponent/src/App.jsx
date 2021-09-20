@@ -29,6 +29,9 @@ const Container = styled.div`
   height: 100vh;
   width: 100%;
   background-color: lightblue;
+  ${Input}:first-child {
+    background-color: blue;
+  }
 `;
 
 export default App;
