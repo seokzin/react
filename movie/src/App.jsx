@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Counter from "./components/Counter";
+import Card from "./components/Card";
 
 const App = () => {
   const [username, setUsername] = useState("");
@@ -15,12 +16,7 @@ const App = () => {
   ];
 
   const renderMovies = movies.map((movie) => {
-    return (
-      <div className="movie" key={movie.id}>
-        <h3 className="movie-title">{movie.title}</h3>
-        <p className="movie-year">{movie.year}</p>
-      </div>
-    );
+    return <Card movie={movie} key={movie.id} />;
   });
 
   const onSubmit = (e) => {
