@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 
-const Counter = () => {
+const Counter = (props) => {
   const [count, setCount] = useState(0);
+  const label = props.click || "라벨";
 
   const countUp = () => {
     setCount(count + 1);
@@ -9,7 +10,9 @@ const Counter = () => {
 
   return (
     <div>
-      <button onClick={countUp}>{count}</button>
+      <button onClick={countUp}>
+        {label} {count}
+      </button>
     </div>
   );
 };
