@@ -1,26 +1,18 @@
 import React, { useState, useEffect } from "react";
+import Counter from "./components/Counter";
 
 const App = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const [count, setCount] = useState(0);
 
   const onSubmit = (e) => {
     e.preventDefault();
     console.log(username, password);
   };
 
-  const countUp = () => {
-    setCount(count + 1);
-  };
-
   useEffect(() => {
     console.log("first render");
   }, []);
-
-  useEffect(() => {
-    console.log(count);
-  }, [count]);
 
   return (
     <>
@@ -42,11 +34,11 @@ const App = () => {
         />
 
         <button type="submit">Login</button>
-
-        <div>
-          <button onClick={countUp}>{count}</button>
-        </div>
       </form>
+
+      <Counter />
+      <Counter />
+      <Counter />
     </>
   );
 };
