@@ -7,6 +7,22 @@ const App = () => {
   const [buttonLabel, setButtonLabel] = useState("클릭");
   const [mode, setMode] = useState(false);
 
+  const movies = [
+    { title: "avengers 1", year: 2001 },
+    { title: "avengers 2", year: 2002 },
+    { title: "avengers 3", year: 2003 },
+    { title: "avengers 4", year: 2004 },
+  ];
+
+  const renderMovies = movies.map((movie) => {
+    return (
+      <div className="movie" key={movie.id}>
+        <h3 className="movie-title">{movie.title}</h3>
+        <p className="movie-year">{movie.year}</p>
+      </div>
+    );
+  });
+
   const onSubmit = (e) => {
     e.preventDefault();
     console.log(username, password);
@@ -56,6 +72,9 @@ const App = () => {
       <div>
         <h2>{changeMode}</h2>
       </div>
+
+      <h1>Movie List</h1>
+      {renderMovies}
     </>
   );
 };
