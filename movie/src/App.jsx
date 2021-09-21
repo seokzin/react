@@ -7,13 +7,14 @@ const App = () => {
   const [password, setPassword] = useState("");
   const [buttonLabel, setButtonLabel] = useState("클릭");
   const [mode, setMode] = useState(false);
-
-  const movies = [
+  const [title, setTitle] = useState("");
+  const [year, setYear] = useState("");
+  const [movies, setMovies] = useState([
     { title: "avengers 1", year: 2001 },
     { title: "avengers 2", year: 2002 },
     { title: "avengers 3", year: 2003 },
     { title: "avengers 4", year: 2004 },
-  ];
+  ]);
 
   const renderMovies = movies.map((movie) => {
     return <Card movie={movie} key={movie.id} />;
@@ -31,6 +32,13 @@ const App = () => {
   const toggle = () => setMode(!mode);
 
   const changeMode = mode ? "LIGHT MODE" : "DARK MODE";
+
+  const addMovie = (e) => {
+    e.preventDefault();
+    setMovies([...movies, { title, year }]);
+    setTitle("");
+    setYear("");
+  };
 
   useEffect(() => {
     console.log("first render");
@@ -63,11 +71,34 @@ const App = () => {
       <Counter />
 
       <button onClick={clickButton}>HOOKS</button>
+
       <button onClick={toggle}>{mode ? "light" : "dark"}</button>
 
       <div>
         <h2>{changeMode}</h2>
       </div>
+
+      <hr />
+
+      <h2>Add movie</h2>
+      <form onSubmit={addMovie}>
+        <input
+          type="text"
+          value={title}
+          placeholder="title"
+          onChange={(e) => setTitle(e.target.value)}
+        />
+
+        <input
+          type="text"
+          value={year}
+          placeholder="year"
+          onChange={(e) => setYear(e.target.value)}
+        />
+        <button>ADD</button>
+      </form>
+
+      <hr />
 
       <h1>Movie List</h1>
       {renderMovies}
