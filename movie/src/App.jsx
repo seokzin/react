@@ -4,6 +4,7 @@ import Card from "./components/Card";
 import MovieForm from "./components/MovieForm";
 import axios from "axios";
 import UserList from "./components/UserList";
+import Spinner from "./components/Spinner";
 
 const App = () => {
   const [username, setUsername] = useState("");
@@ -13,10 +14,12 @@ const App = () => {
 
   const [movies, setMovies] = useState([]);
   const [users, setUsers] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     axios.get("https://jsonplaceholder.typicode.com/users").then((response) => {
       setUsers(response.data);
+      setLoading(false);
     });
   }, []);
 
@@ -101,7 +104,7 @@ const App = () => {
       <hr />
 
       <h1>Users</h1>
-      <UserList users={users} />
+      {loading ? <Spinner /> : <UserList users={users} />}
     </>
   );
 };
