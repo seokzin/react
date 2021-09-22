@@ -3,16 +3,42 @@ import React, { useState } from "react";
 const MovieForm = ({ addMovie }) => {
   const [title, setTitle] = useState("");
   const [year, setYear] = useState("");
+  const [titleError, setTitleError] = useState("");
+  const [yearError, setYearError] = useState("");
 
   const resetForm = () => {
     setTitle("");
     setYear("");
   };
 
+  const resetErrors = () => {
+    setTitleError("");
+    setYearError("");
+  };
+
+  const validateForm = () => {
+    let validated = true;
+    resetErrors();
+
+    if (!title) {
+      setTitleError("영화 제목을 넣어주세요.");
+      validated = false;
+    }
+    if (!year) {
+      setYearError("개봉년도를 넣어주세요.");
+      validated = false;
+    }
+
+    return validated;
+  };
+
   const onSubmit = (e) => {
     e.preventDefault();
-    addMovie({ id: Date.now(), title, year });
-    resetForm();
+    if (validateForm()) {
+      addMovie({ id: Date.now(), title, year });
+      resetErrors();
+      resetForm();
+    }
   };
 
   return (
@@ -25,13 +51,16 @@ const MovieForm = ({ addMovie }) => {
           placeholder="title"
           onChange={(e) => setTitle(e.target.value)}
         />
+        <p>{titleError}</p>
 
         <input
-          type="text"
+          type="number"
           value={year}
           placeholder="year"
           onChange={(e) => setYear(e.target.value)}
         />
+        <p>{yearError}</p>
+
         <button>ADD</button>
       </form>
     </div>
