@@ -9,16 +9,21 @@ const App = () => {
   const [buttonLabel, setButtonLabel] = useState("클릭");
   const [mode, setMode] = useState(false);
 
-  const [movies, setMovies] = useState([
-    { title: "avengers 1", year: 2001 },
-    { title: "avengers 2", year: 2002 },
-    { title: "avengers 3", year: 2003 },
-    { title: "avengers 4", year: 2004 },
-  ]);
+  const [movies, setMovies] = useState([]);
 
-  const renderMovies = movies.map((movie) => {
-    return <Card movie={movie} key={movie.id} />;
-  });
+  const removeMovie = (id) => {
+    setMovies(
+      movies.filter((movie) => {
+        return movie.id !== id;
+      })
+    );
+  };
+
+  const renderMovies = movies.length
+    ? movies.map((movie) => {
+        return <Card movie={movie} key={movie.id} removeMovie={removeMovie} />;
+      })
+    : "추가된 영화가 없습니다.";
 
   const addMovie = (movie) => {
     setMovies([...movies, movie]);
