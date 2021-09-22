@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from "react";
 import Counter from "./components/Counter";
 import Card from "./components/Card";
+import MovieForm from "./components/MovieForm";
 
 const App = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [buttonLabel, setButtonLabel] = useState("클릭");
   const [mode, setMode] = useState(false);
-  const [title, setTitle] = useState("");
-  const [year, setYear] = useState("");
+
   const [movies, setMovies] = useState([
     { title: "avengers 1", year: 2001 },
     { title: "avengers 2", year: 2002 },
@@ -19,6 +19,10 @@ const App = () => {
   const renderMovies = movies.map((movie) => {
     return <Card movie={movie} key={movie.id} />;
   });
+
+  const addMovie = (movie) => {
+    setMovies([...movies, movie]);
+  };
 
   const onSubmit = (e) => {
     e.preventDefault();
@@ -32,13 +36,6 @@ const App = () => {
   const toggle = () => setMode(!mode);
 
   const changeMode = mode ? "LIGHT MODE" : "DARK MODE";
-
-  const addMovie = (e) => {
-    e.preventDefault();
-    setMovies([...movies, { title, year }]);
-    setTitle("");
-    setYear("");
-  };
 
   useEffect(() => {
     console.log("first render");
@@ -80,23 +77,7 @@ const App = () => {
 
       <hr />
 
-      <h2>Add movie</h2>
-      <form onSubmit={addMovie}>
-        <input
-          type="text"
-          value={title}
-          placeholder="title"
-          onChange={(e) => setTitle(e.target.value)}
-        />
-
-        <input
-          type="text"
-          value={year}
-          placeholder="year"
-          onChange={(e) => setYear(e.target.value)}
-        />
-        <button>ADD</button>
-      </form>
+      <MovieForm addMovie={addMovie} />
 
       <hr />
 
