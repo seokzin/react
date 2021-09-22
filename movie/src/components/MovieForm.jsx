@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import InputField from "./InputField";
 
 const MovieForm = ({ addMovie }) => {
   const [title, setTitle] = useState("");
@@ -45,21 +46,21 @@ const MovieForm = ({ addMovie }) => {
     <div>
       <h2>Add movie</h2>
       <form onSubmit={onSubmit}>
-        <input
+        <InputField
           type="text"
           value={title}
           placeholder="title"
           onChange={(e) => setTitle(e.target.value)}
+          errorMessage={titleError}
         />
-        <p>{titleError}</p>
 
-        <input
+        <InputField
           type="number"
           value={year}
           placeholder="year"
           onChange={(e) => setYear(e.target.value)}
+          errorMessage={yearError}
         />
-        <p>{yearError}</p>
 
         <button>ADD</button>
       </form>
