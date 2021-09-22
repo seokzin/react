@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import Counter from "./components/Counter";
 import Card from "./components/Card";
 import MovieForm from "./components/MovieForm";
+import axios from "axios";
+import UserList from "./components/UserList";
 
 const App = () => {
   const [username, setUsername] = useState("");
@@ -10,6 +12,13 @@ const App = () => {
   const [mode, setMode] = useState(false);
 
   const [movies, setMovies] = useState([]);
+  const [users, setUsers] = useState([]);
+
+  useEffect(() => {
+    axios.get("https://jsonplaceholder.typicode.com/users").then((response) => {
+      setUsers(response.data);
+    });
+  }, []);
 
   const removeMovie = (id) => {
     setMovies(
@@ -88,6 +97,11 @@ const App = () => {
 
       <h1>Movie List</h1>
       {renderMovies}
+
+      <hr />
+
+      <h1>Users</h1>
+      <UserList users={users} />
     </>
   );
 };
