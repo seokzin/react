@@ -1,0 +1,123 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+.wrapper {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.user-container {
+  background-color: #a9bdce;
+  height: 4rem;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 0.5rem;
+}
+
+.user-container label {
+  font-size: 14px;
+  margin-right: 1rem;
+}
+
+.user-container input {
+  border-radius: 3px;
+  border: none;
+  height: 100%;
+}
+
+.display-container {
+  background-color: #b2c7d9;
+  flex: 12;
+}
+
+.input-container {
+  height: 4rem;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.input-container span {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.chatting-input {
+  font-size: 12px;
+  height: 100%;
+  flex: 5;
+  border: none;
+}
+
+.send-button {
+  flex: 1;
+  background-color: #ffeb33;
+  border: none;
+  border-radius: 3px;
+  height: 100%;
+}
+
+.chatting-list li {
+  width: 90%;
+  padding: 0.3rem;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-end;
+  margin-top: 0.5rem;
+}
+
+.profile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.profile .user {
+  font-size: 10px;
+  margin-bottom: 0.3rem;
+}
+
+.profile .image {
+  border-radius: 50%;
+  object-fit: cover;
+  width: 50px;
+  height: 50px;
+}
+
+.message {
+  border-radius: 5px;
+  padding: 0.5rem;
+  font-size: 12px;
+  margin: 0 5px;
+}
+
+.time {
+  font-size: 10px;
+  margin: 0 5px;
+}
+
+.sent {
+  flex-direction: row-reverse;
+}
+
+.sent .message {
+  background-color: #ffeb33;
+}
+
+.received .message {
+  background-color: #fff;
+}

@@ -4,21 +4,51 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/style.css" />
     <title>SoChat</title>
   </head>
   <body>
     <div class="wrapper">
       <div class="user-container">
-        대화명 : <input type="text" id="nickname" />
+        <label for="nickname">대화명</label>
+        <input type="text" id="nickname" />
       </div>
 
       <div class="display-container">
-        <ul class="chatting-list"></ul>
+        <ul class="chatting-list">
+          <li class="sent">
+            <span class="profile">
+              <span class="user">깔깔</span>
+              <img
+                class="image"
+                src="https://placeimg.com/50/50/any"
+                alt="any"
+              />
+            </span>
+            <span class="message">그래 반가워</span>
+            <span class="time">오후 2:10</span>
+          </li>
+
+          <li class="received">
+            <span class="profile">
+              <span class="user">깔깔</span>
+              <img
+                class="image"
+                src="https://placeimg.com/50/50/any"
+                alt="any"
+              />
+            </span>
+            <span class="message">그래 반가워</span>
+            <span class="time">오후 2:10</span>
+          </li>
+        </ul>
       </div>
 
       <div class="input-container">
-        <input type="text" class="chatting-input" />
-        <button class="send-button">전송</button>
+        <span>
+          <input type="text" class="chatting-input" />
+          <button class="send-button">전송</button>
+        </span>
       </div>
     </div>
     <script src="/socket.io/socket.io.js"></script>
