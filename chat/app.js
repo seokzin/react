@@ -12,7 +12,9 @@ app.use(express.static(path.join(__dirname, "src")));
 const PORT = process.env.PORT || 5000;
 
 io.on("connection", (socket) => {
-  console.log("socket connected");
+  socket.on("chatting", (data) => {
+    io.emit("chatting", data);
+  });
 });
 
 // nodemon app.js -> js 변경마다 서버 새로고침
