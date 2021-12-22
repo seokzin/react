@@ -16,8 +16,10 @@ sendButton.addEventListener("click", () => {
   socket.emit("chatting", param);
 });
 
-socket.on("chatting", (data) => {
-  console.log(data);
+socket.on("chatting", ({ name, msg }) => {
+  const li = document.createElement("li");
+  li.innerText = `${name}님이 - ${msg}`;
+  chatList.appendChild(li);
 });
 
 console.log(socket);
