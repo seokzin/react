@@ -1,3 +1,1 @@
-# React reference
-
-## Contents
+# React Study Note
